@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. Dr. Atef Ebrahim Abd El-Baky</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    direction: rtl;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #3498db;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    right: 0;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+    background-size: cover;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.title-line {
+    display: block;
+    opacity: 0;
+    animation: slideInRight 1s ease forwards;
+}
+
+.title-line:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #ecf0f1;
+    opacity: 0;
+    animation: slideInRight 1s ease forwards 0.6s;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #bdc3c7;
+    opacity: 0;
+    animation: slideInRight 1s ease forwards 0.9s;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    animation: slideInRight 1s ease forwards 1.2s;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-2px);
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-placeholder {
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    animation: fadeInScale 1s ease forwards 1.5s;
+}
+
+.image-placeholder i {
+    font-size: 6rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Section Styles */
+section {
+    padding: 80px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* About Section */
+.about {
+    background: #f8f9fa;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #3498db;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+/* Experience Section */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 2px;
+    height: 100%;
+    background: #3498db;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    text-align: right;
+    margin-right: 2rem;
+}
+
+.timeline-date {
+    background: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-content {
+    flex: 1;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+}
+
+.timeline-content h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.timeline-content p {
+    color: #7f8c8d;
+}
+
+/* Research Section */
+.research {
+    background: #f8f9fa;
+}
+
+.research-areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.research-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.research-card:hover {
+    transform: translateY(-10px);
+}
+
+.research-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.research-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.research-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.research-card p {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+.publications {
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.publications h3 {
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.publication-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.publication-item {
+    padding: 1.5rem;
+    border: 1px solid #ecf0f1;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.publication-item:hover {
+    border-color: #3498db;
+    transform: translateX(-5px);
+}
+
+.publication-item h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.publication-item p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Teaching Section */
+.teaching-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+}
+
+.teaching-philosophy {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.philosophy-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.philosophy-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.philosophy-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.philosophy-item h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.philosophy-item p {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+.courses {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+.courses h3 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.course-item {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.course-item:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Contact Section */
+.contact {
+    background: #f8f9fa;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.contact-details h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.contact-details p {
+    color: #7f8c8d;
+}
+
+.contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ecf0f1;
+    border-radius: 10px;
+    font-family: 'Tajawal', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Footer */
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #3498db;
+}
+
+/* Animations */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 2rem 0;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .stats {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    .timeline::before {
+        right: 20px;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-right: 40px;
+    }
+    
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        flex-direction: column;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        text-align: right;
+        margin: 1rem 0 0 0;
+    }
+    
+    .research-areas {
+        grid-template-columns: 1fr;
+    }
+    
+    .teaching-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Prof. Dr. Atef Abd El-Baky</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">الرئيسية</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">نبذة</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">الخبرة</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#research" class="nav-link">الأبحاث</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#teaching" class="nav-link">التدريس</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">التواصل</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">Prof. Dr. Atef Ebrahim</span>
+                        <span class="title-line">Abd El-Baky Mohamed</span>
+                    </h1>
+                    <p class="hero-subtitle">عميد كلية الصيدلة سابقاً - جامعة بورسعيد</p>
+                    <p class="hero-description">
+                        أستاذ الكيمياء الحيوية ، خبرة أكثر من 20 عامًا في التعليم الأكاديمي والبحث العلمي
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#about" class="btn btn-primary">تعرف أكثر</a>
+                        <a href="#contact" class="btn btn-secondary">تواصل معي</a>
+                    </div>
+                </div>
+<div class="hero-image">
+    <img src="logo.jpeg" alt="Prof. Dr. Atef Abd El-Baky Logo" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); animation: fadeInScale 1s ease forwards 1.5s;">
+</div>
+                    
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">نبذة شخصية</h2>
+                <p class="section-subtitle">رحلة أكاديمية حافلة بالإنجازات والتميز</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        أستاذ الكيمياء الحيوية والتكنولوجيا الحيوية وعميد كلية الصيدلة بجامعة بورسعيد. حاصل على درجة الدكتوراه في الكيمياء الحيوية من جامعة الزقازيق عام 2005، وقد شغلت عدة مناصب أكاديمية وإدارية مرموقة على مدار أكثر من 20 عامًا.
+                    </p>
+                    <p>
+                        أشرفت على إنشاء كلية الصيدلة بجامعة بورسعيد وتأسيس الأقسام العلمية، وإجراء المناقصات لتوريد المعدات، وتشكيل الهيكل الإداري وأعضاء هيئة التدريس والجهاز المعاون، وإعداد اللوائح اللازمة لبرامج الصيدلة الإكلينيكية والدراسات العليا.
+                    </p>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">سنة خبرة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">بحث منشور</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">طالب تخرج</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">الخبرة المهنية</h2>
+                <p class="section-subtitle">مسيرة أكاديمية متدرجة ومتميزة</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2025 </div>
+                    <div class="timeline-content">
+                        <h3>عميد كلية الصيدلة</h3>
+                        <p>جامعة بورسعيد - بقرار جمهوري رقم 323 بتاريخ 5/8/2023</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date"> 2014 - الآن</div>
+                    <div class="timeline-content">
+                        <h3>أستاذ الكيمياء الحيوية والتكنولوجيا الحيوية</h3>
+                        <p>جامعة بورسعيد</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2010 - 2014 </div>
+                    <div class="timeline-content">
+                        <h3>أستاذ مساعد الكيمياء الحيوية</h3>
+                        <p>جامعة MSA - أكتوبر، الجيزة</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2002 - 2008</div>
+                    <div class="timeline-content">
+                        <h3>مدرس الكيمياء الحيوية</h3>
+                        <p>جامعة المنيا</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="research">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">الأبحاث العلمية</h2>
+                <p class="section-subtitle">مساهمات علمية في مجالات الصيدلة والكيمياء الحيوية</p>
+            </div>
+            <div class="research-areas">
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>الكيمياء الحيوية الجزيئية</h3>
+                    <p>أبحاث في مجال البيولوجيا الجزيئية والتعبير الجيني</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>علم الأدوية</h3>
+                    <p>دراسات في مجال السموم والاضطرابات الأيضية</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>المنتجات الطبيعية</h3>
+                    <p>أبحاث في مجال المكملات الغذائية والإجهاد التأكسدي</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>أمراض القلب والسكري</h3>
+                    <p>دراسات حول علامات الأمراض والوقاية</p>
+                </div>
+            </div>
+            <div class="publications">
+                <h3>أحدث المنشورات</h3>
+                <div class="publication-list">
+                    <div class="publication-item">
+                        <h4>Design and Optimization of Orally Administered Luteolin Nanoethosome</h4>
+                        <p>Molecules Journal, 2021</p>
+                    </div>
+                    <div class="publication-item">
+                        <h4>The Antitumor Effect of Galangin and Luteolin with Doxorubicin</h4>
+                        <p>Contemporary Oncology, 2021</p>
+                    </div>
+                    <div class="publication-item">
+                        <h4>NOS Expression in Oxidative Stress and Neurodegeneration</h4>
+                        <p>Biochemistry and Pharmacology, 2018</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Section -->
+    <section id="teaching" class="teaching">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">فلسفة التدريس</h2>
+                <p class="section-subtitle">التعليم كرحلة مشتركة للاستكشاف والنمو</p>
+            </div>
+            <div class="teaching-content">
+                <div class="teaching-philosophy">
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>الوضوح</h3>
+                        <p>أؤمن أن أي مفهوم كيميائي حيوي - مهما كان معقدًا - يمكن تنظيمه وتقديمه بطريقة واضحة ومفهومة</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>التفكير النقدي</h3>
+                        <p>الطلاب لا يجب أن يحفظوا المعلومات، بل يحللوا ويتساءلوا ويطبقوا ما يعرفونه في السياقات ذات الصلة</p>
+                    </div>
+                    <div class="philosophy-item">
+                        <div class="philosophy-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>الرحمة والإرشاد</h3>
+                        <p>كل طالب شخص فريد، وأسعى لخلق بيئة يشعر فيها الطلاب بالراحة للتعبير عن أنفسهم وطرح الأسئلة</p>
+                    </div>
+                </div>
+                <div class="courses">
+                    <h3>المقررات التي أدرسها</h3>
+                    <div class="course-list">
+                        <div class="course-item">الكيمياء الحيوية</div>
+                        <div class="course-item">الكيمياء الحيوية الإكلينيكية</div>
+                        <div class="course-item">البيولوجيا الجزيئية</div>
+                        <div class="course-item">ممارسة الصيدلة</div>
+                        <div class="course-item">منهجية البحث</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">تواصل معي</h2>
+                <p class="section-subtitle">للتعاون الأكاديمي والاستشارات العلمية</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>البريد الإلكتروني</h3>
+                            <p>atena2065@yahoo.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>الهاتف</h3>
+                            <p>01222883875 - 01119541746</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>العنوان</h3>
+                            <p>كلية الصيدلة، جامعة بورسعيد، بورسعيد، مصر</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="الاسم" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="الموضوع" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="الرسالة" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 Prof. Dr. Atef Ebrahim Abd El-Baky. جميع الحقوق محفوظة.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">الرئيسية</a>
+                    <a href="#about">نبذة</a>
+                    <a href="#research">الأبحاث</a>
+                    <a href="#contact">التواصل</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+}));
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Navbar background change on scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+    } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+    }
+});
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe elements for animation
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.stat-item, .timeline-item, .research-card, .philosophy-item, .contact-item');
+    
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+});
+
+// Contact form handling
+document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(this);
+    const name = this.querySelector('input[type="text"]').value;
+    const email = this.querySelector('input[type="email"]').value;
+    const subject = this.querySelector('input[type="text"]:nth-of-type(2)').value;
+    const message = this.querySelector('textarea').value;
+    
+    // Simple validation
+    if (!name || !email || !subject || !message) {
+        alert('يرجى ملء جميع الحقول');
+        return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^
+]+@[^
+]+\.[^
+]+$/;
+    if (!emailRegex.test(email)) {
+        alert('يرجى إدخال بريد إلكتروني صحيح');
+        return;
+    }
+    
+    // Show success message
+    alert('تم إرسال رسالتك بنجاح! سيتم الرد عليك قريباً.');
+    
+    // Reset form
+    this.reset();
+});
+
+// Add loading animation to buttons
+document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        if (this.type === 'submit') {
+            this.style.opacity = '0.7';
+            this.style.pointerEvents = 'none';
+            setTimeout(() => {
+                this.style.opacity = '1';
+                this.style.pointerEvents = 'auto';
+            }, 2000);
+        }
+    });
+});
+
+// Typing effect for hero title
+function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    element.innerHTML = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+}
+
+// Initialize typing effect when page loads
+window.addEventListener('load', () => {
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        const originalText = heroTitle.textContent;
+        setTimeout(() => {
+            typeWriter(heroTitle, originalText, 50);
+        }, 2000);
+    }
+});
+
+// Add parallax effect to hero section
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+});
+
+// Counter animation for stats
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    function updateCounter() {
+        start += increment;
+        if (start < target) {
+            element.textContent = Math.floor(start) + '+';
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target + '+';
+        }
+    }
+    
+    updateCounter();
+}
+
+// Initialize counter animation when stats come into view
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const number = entry.target.querySelector('.stat-number');
+            const target = parseInt(number.textContent);
+            animateCounter(number, target);
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-item').forEach(stat => {
+    statsObserver.observe(stat);
+});
+
+// Add hover effects to timeline items
+document.querySelectorAll('.timeline-content').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) scale(1.02)';
+        this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+    });
+});
+
+// Add click to copy functionality for contact info
+document.querySelectorAll('.contact-details p').forEach(detail => {
+    detail.style.cursor = 'pointer';
+    detail.title = 'انقر للنسخ';
+    
+    detail.addEventListener('click', function() {
+        navigator.clipboard.writeText(this.textContent).then(() => {
+            const originalText = this.textContent;
+            this.textContent = 'تم النسخ!';
+            this.style.color = '#27ae60';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.style.color = '';
+            }, 2000);
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
+
